@@ -18,16 +18,17 @@ Salesforce Asynchronous Apex approaches come in a number of different flavors. H
 	</tr>
 	<tr>
 		<td>Future Methods</td>
-		<td>
-```
-String customLabel = 'Marc has got {0} marks out of {1}';
-List<String> lstCustomLabelIndexStrings = new List<String>{'800', '1000'};
-String result = String.format(customLabel, lstCustomLabelIndexStrings);
-System.Debug('Returns: '+result);
+<td>
 
-//Returns: Marc has got 800 marks out of 1000
 ```
-		</td>
+global with sharing class SampleClass implements Schedulable {
+global void execute(SchedulableContext ctx) {
+// Your code here
+}
+}
+```
+
+</td>
 	</tr>
 	<tr>
 		<td>Schedulable Methods</td>
