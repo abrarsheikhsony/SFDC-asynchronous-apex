@@ -21,7 +21,7 @@ Salesforce Asynchronous Apex approaches come in a number of different flavors. H
 <td>
 
 ```
-public with sharing class SampleClass {
+public with sharing class SampleFutureMethods {
 
     // Call asynchronous processing from Triggers
     @future(callout=false)
@@ -61,7 +61,7 @@ public with sharing class SampleClass {
 <td>
 
 ```
-global with sharing class SampleClass implements Schedulable {
+global with sharing class SampleBatchSchedule implements Schedulable {
 	global void execute(SchedulableContext ctx) {
 		// Your code here
 	}
@@ -69,19 +69,43 @@ global with sharing class SampleClass implements Schedulable {
 ```
 
 </td>
-
 	</tr>
 	<tr>
 		<td>Batchable Methods</td>
 <td>
 
 ```
+global class SampleBatch implements Database.Batchable<sObject> {
+
+    global (Database.QueryLocator | Iterable<sObject>) start(Database.BatchableContext bc) {
+        // Your code here
+    }
+
+    global void execute(Database.BatchableContext bc, List<sObject> records){
+        // Your code here
+    }    
+
+    global void finish(Database.BatchableContext bc){
+        // Your code here
+    }    
+
+}
 ```
 
 </td>
 	</tr>
 	<tr>
 		<td>Queueable Methods</td>
-		<td></td>
+<td>
+
+```
+global class SomeQueueable implements Queueable { 
+    global void execute(QueueableContext context) {
+        // Your code here
+    }
+}
+```
+
+</td>
 	</tr>
 </table>
