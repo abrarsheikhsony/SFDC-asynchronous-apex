@@ -75,7 +75,7 @@ global with sharing class SampleBatchSchedule implements Schedulable {
 <td>
 
 ```
-global class SampleBatch implements Database.Batchable<sObject> {
+global with sharing class SampleBatch implements Database.Batchable<sObject> {
 
     global (Database.QueryLocator | Iterable<sObject>) start(Database.BatchableContext bc) {
         // Your code here
@@ -99,7 +99,7 @@ global class SampleBatch implements Database.Batchable<sObject> {
 <td>
 
 ```
-global class SampleQueueable implements Queueable { 
+global with sharing class SampleQueueable implements Queueable { 
     global void execute(QueueableContext context) {
         // Your code here
     }
