@@ -18,7 +18,13 @@ Salesforce Asynchronous Apex approaches come in a number of different flavors. H
 	</tr>
 	<tr>
 		<td>Future Methods</td>
-		<td></td>
+		<td>
+global with sharing class SampleClass implements Schedulable {
+global void execute(SchedulableContext ctx) {
+// Your code here
+}
+}		
+		</td>
 	</tr>
 	<tr>
 		<td>Schedulable Methods</td>
