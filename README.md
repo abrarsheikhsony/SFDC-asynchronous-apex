@@ -14,64 +14,22 @@ Salesforce Asynchronous Apex approaches come in a number of different flavors. H
 	</tr>
 	<tr>
 		<th>Type</th>
-    <th>Example</th>
+		<th>Example</th>
 	</tr>
 	<tr>
 		<td>Future Methods</td>
-    <td>
-```
-public with sharing class SampleClass {
-
-    // Call asynchronous processing from Triggers
-    @future(callout=false)
-    public static void updateAccounts(Set<Id> setAccountIds) {
-        // Your code here
-    }
-
-    // Call synchronous processing from Controllers
-    public static String updateAccount(Id accountId) {
-        // Your code here
-        Set<Id> setAccountIds = new Set<Id>();
-        setAccountIds.add(accountId);
-        updateAccounts(setAccountIds);
-    }
-
-    // Call asynchronous processing from Triggers
-    @future(callout=true)
-    public static void sendSMS(Set<Id> setAccountIds) {
-        // Your code here
-    }
-    
-    // Call synchronous processing from Controllers
-    public static String sendSMS(Id accountId) {
-        // Your code here
-        Set<Id> setAccountIds = new Set<Id>();
-        setAccountIds.add(accountId);
-        sendSMS(setAccountIds);
-    }
-
-}      
-```      
-    </td>
+		<td></td>
 	</tr>
 	<tr>
-		<td>Future Methods</td>
-    <td>
-```
-global class SampleClass implements Schedulable {
-	global void execute(SchedulableContext ctx) {
-        // Your code here
-    }
-}
-```
-    </td>
+		<td>Schedulable Methods</td>
+		<td></td>
 	</tr>
 	<tr>
-		<td>Future Methods</td>
-    <td>@future(callout=true)</td>
+		<td>Batchable Methods</td>
+		<td></td>
 	</tr>
 	<tr>
-		<td>Future Methods</td>
-    <td>@future(callout=true)</td>
+		<td>Queueable Methods</td>
+		<td></td>
 	</tr>
 </table>
