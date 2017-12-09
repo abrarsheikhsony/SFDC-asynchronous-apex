@@ -21,10 +21,36 @@ Salesforce Asynchronous Apex approaches come in a number of different flavors. H
 <td>
 
 ```
-global with sharing class SampleClass implements Schedulable {
-global void execute(SchedulableContext ctx) {
-// Your code here
-}
+public with sharing class SampleClass {
+
+    // Call asynchronous processing from Triggers
+    @future(callout=false)
+    public static void updateAccounts(Set<Id> setAccountIds) {
+        // Your code here
+    }
+
+    // Call synchronous processing from Controllers
+    public static String updateAccount(Id accountId) {
+        // Your code here
+        Set<Id> setAccountIds = new Set<Id>();
+        setAccountIds.add(accountId);
+        updateAccounts(setAccountIds);
+    }
+
+    // Call asynchronous processing from Triggers
+    @future(callout=true)
+    public static void sendSMS(Set<Id> setAccountIds) {
+        // Your code here
+    }
+
+    // Call synchronous processing from Controllers
+    public static String sendSMS(Id accountId) {
+        // Your code here
+        Set<Id> setAccountIds = new Set<Id>();
+        setAccountIds.add(accountId);
+        sendSMS(setAccountIds);
+    }
+
 }
 ```
 
@@ -32,11 +58,27 @@ global void execute(SchedulableContext ctx) {
 	</tr>
 	<tr>
 		<td>Schedulable Methods</td>
-		<td></td>
+<td>
+
+```
+global with sharing class SampleClass implements Schedulable {
+	global void execute(SchedulableContext ctx) {
+		// Your code here
+	}
+}
+```
+
+</td>
+
 	</tr>
 	<tr>
 		<td>Batchable Methods</td>
-		<td></td>
+<td>
+
+```
+```
+
+</td>
 	</tr>
 	<tr>
 		<td>Queueable Methods</td>
