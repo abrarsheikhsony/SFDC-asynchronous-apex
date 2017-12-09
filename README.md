@@ -99,7 +99,7 @@ global class SampleBatch implements Database.Batchable<sObject> {
 <td>
 
 ```
-global class SomeQueueable implements Queueable { 
+global class SampleQueueable implements Queueable { 
     global void execute(QueueableContext context) {
         // Your code here
     }
